@@ -1,6 +1,5 @@
 import RPi.GPIO as GPIO
 import time
-from smbus import SMBus
 import spidev
 
 class Keymap:

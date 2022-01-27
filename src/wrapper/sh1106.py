@@ -49,7 +49,6 @@ class SPI:
         return 0
 
     def module_exit():
-        SPI.spi.SYSFS_software_spi_end()
         GPIO.output(Keymap.RST, 0)
         GPIO.output(Keymap.DC, 0)
         

@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 
+
 class Keymap:
     """BCM keymap for joystick buttons"""
     UP = 6
@@ -7,6 +8,7 @@ class Keymap:
     LEFT = 5
     RIGHT = 26
     PRESS = 13
+
 
 class Joystick:
     def __init__(self, up, down, left, right, click):
@@ -18,11 +20,11 @@ class Joystick:
 
         GPIO.setup(GPIO.BCM)
 
-        GPIO.setup(self.up,    GPIO.IN,    pull_up_down=GPIO.PUD_UP)
-        GPIO.setup(self.down,  GPIO.IN,    pull_up_down=GPIO.PUD_UP)
-        GPIO.setup(self.left,  GPIO.IN,    pull_up_down=GPIO.PUD_UP)
-        GPIO.setup(self.right, GPIO.IN,    pull_up_down=GPIO.PUD_UP)
-        GPIO.setup(self.click, GPIO.IN,    pull_up_down=GPIO.PUD_UP)
+        GPIO.setup(self.up, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.setup(self.down, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.setup(self.left, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.setup(self.right, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.setup(self.click, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
     def is_pressed_up(self):
         return GPIO.input(self.up)

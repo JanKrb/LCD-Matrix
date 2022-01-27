@@ -32,9 +32,9 @@ class Buttons:
         if self.event_key1 is not None:
             GPIO.add_event_detect(self.key1, GPIO.RISING, callback=self.event_key1)
         if self.event_key2 is not None:
-            GPIO.add_event_detect(self.key1, GPIO.RISING, callback=self.event_key2)
+            GPIO.add_event_detect(self.key2, GPIO.RISING, callback=self.event_key2)
         if self.event_key3 is not None:
-            GPIO.add_event_detect(self.key1, GPIO.RISING, callback=self.event_key3)
+            GPIO.add_event_detect(self.key3, GPIO.RISING, callback=self.event_key3)
 
     def is_pressed_key1(self):
         return GPIO.input(self.key1)

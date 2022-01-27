@@ -24,7 +24,7 @@ def main():
     draw.text((5, 5), 'Niclas Heide', font=font, fill=0)
     draw.text((5, 25), 'Jan Ruhfus ', font=font, fill=0)
 
-    disp.show_image(disp.getbuffer(start_image))
+    disp.show_image(disp.get_buffer(start_image))
 
     try:
         while True: pass

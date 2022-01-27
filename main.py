@@ -1,5 +1,6 @@
 from src.wrapper.sh1106 import SH1106, Screen, SPI
 from PIL import Image, ImageDraw, ImageFont
+import RPi.GPIO as GPIO
 import os
 
 font_path = os.path.join('assets', 'Font.ttf')
@@ -25,10 +26,12 @@ def main():
 
     disp.show_image(disp.getbuffer(start_image))
 
-    input("Press any key to reset display...")
-
-    disp.reset()
-    SPI.module_exit()
+    try:
+        while True: pass
+    except KeyboardInterrupt:
+        disp.reset()
+        SPI.module_exit()
+        GPIO.cleanup()
 
 
 if __name__ == '__main__':

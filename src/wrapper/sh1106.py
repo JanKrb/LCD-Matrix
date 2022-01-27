@@ -1,4 +1,4 @@
-import src.config
+import src.config as config
 import time
 import RPi.GPIO as GPIO
 

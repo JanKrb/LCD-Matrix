@@ -1,6 +1,7 @@
-import src.config as config
-import time
 import RPi.GPIO as GPIO
+import time
+from smbus import SMBus
+import spidev
 
 class Keymap:
     """BCM keymap display"""
@@ -13,6 +14,45 @@ class Screen:
     """Size of the oled display"""
     width = 128
     height = 64
+
+class SPI:
+    spi = spidev.SpiDev(0, 0)
+
+    def digital_write(pin, value):
+        GPIO.output(pin, value)
+
+    def delay_ms(delaytime):
+        time.sleep(delaytime / 1000.0)
+
+    def spi_writebyte(data):
+        # SPI.writebytes(data)
+        SPI.spi.writebytes([data[0]])
+        
+        # time.sleep(0.01)
+    def module_init():
+        # print("module_init")
+
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setwarnings(False)
+        GPIO.setup(Keymap.RST, GPIO.OUT)
+        GPIO.setup(Keymap.DC, GPIO.OUT)
+        GPIO.setup(Keymap.CS, GPIO.OUT)
+        GPIO.setup(Keymap.BL, GPIO.OUT)
+
+        
+        SPI.spi.max_speed_hz = 10000000
+        SPI.spi.mode = 0b00
+        
+        GPIO.output(Keymap.CS, 0)
+        GPIO.output(Keymap.BL, 1)
+        GPIO.output(Keymap.DC, 0)
+        return 0
+
+    def module_exit():
+        SPI.spi.SYSFS_software_spi_end()
+        GPIO.output(Keymap.RST, 0)
+        GPIO.output(Keymap.DC, 0)
+        
 
 class SH1106(object):
     def __init__(self):
@@ -27,10 +67,10 @@ class SH1106(object):
     """    Write register address and data     """
     def command(self, cmd):
         GPIO.output(self._dc, GPIO.LOW)
-        config.spi_writebyte([cmd])
+        SPI.spi_writebyte([cmd])
 
     def Init(self):
-        if (config.module_init() != 0):
+        if (SPI.module_init() != 0):
             return -1
         """Initialize dispaly"""    
         self.reset()
@@ -110,7 +150,7 @@ class SH1106(object):
             GPIO.output(self._dc, GPIO.HIGH);
 
             for i in range(0,self.width):#for(int i=0;i<self.width; i++)
-                config.spi_writebyte([~pBuf[i+self.width*page]]); 
+                SPI.spi_writebyte([~pBuf[i+self.width*page]]); 
                     
             
 

@@ -29,7 +29,7 @@ class Menu:
         self.draw = ImageDraw.Draw(self.start_image)
 
         self.shown_menu = Settings.menu_items[self.current_scroll_index : (Settings.items_on_display + self.current_scroll_index)]
-        # TODO: Scrollable Menu
+        self.draw_menu()
 
     def draw_menu(self):
         for index, item in self.shown_menu:

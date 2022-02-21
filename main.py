@@ -12,7 +12,7 @@ def main():
     disp.Init()
     disp.clear()
     
-    start_screen = StartMenu()
+    start_screen = StartMenu(disp)
     disp.show_image(disp.get_buffer(start_screen.start_image))
 
     time.sleep(2)

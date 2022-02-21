@@ -14,11 +14,11 @@ class MenuItem:
 class Settings: 
     menu_items = [
         MenuItem('Uhrzeit', ClockModule),
-        MenuItem('Temperatur', TemperatureModule)
+        MenuItem('Temp.', TemperatureModule)
     ]
 
     items_on_display = 2
-    items_margin = 30
+    items_margin = 25
 
 class Menu:
     def __init__(self, display):
@@ -34,7 +34,7 @@ class Menu:
 
     def draw_menu(self):
         for index, item in enumerate(self.shown_menu):
-            self.draw.text((5, Settings.items_margin * index + 5), f"{index + 1}  {item.title}", font=self.font, fill=0)
+            self.draw.text((5, Settings.items_margin * index + 5), f"{index + 1} {item.title}", font=self.font, fill=0)
 
     def menu_up(self):
         pass

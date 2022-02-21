@@ -17,7 +17,7 @@ def main():
 
     time.sleep(2)
 
-    menu = Menu()
+    menu = Menu(disp)
     disp.clear()
     disp.show_image(disp.get_buffer(menu.start_image))
 

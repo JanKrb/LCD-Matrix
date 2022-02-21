@@ -36,17 +36,17 @@ class Menu:
         for index, item in enumerate(self.shown_menu):
             self.draw.text((5, Settings.items_margin * index + 5), f"{index + 1} {item.title}", font=self.font, fill=0)
 
-    def menu_up(self):
+    def menu_up(self, channel):
         pass
 
-    def menu_down(self):
+    def menu_down(self, channel):
         pass
 
-    def menu_option1(self):
+    def menu_option1(self, channel):
         pass
     
-    def menu_option2(self):
+    def menu_option2(self, channel):
         pass
 
-    def menu_option3(self):
+    def menu_option3(self, channel):
         pass

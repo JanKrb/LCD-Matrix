@@ -28,8 +28,6 @@ class Joystick:
         self._setup_events()
 
     def _setup_keys(self):
-        GPIO.setup(GPIO.BCM)
-
         GPIO.setup(self.up, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         GPIO.setup(self.down, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         GPIO.setup(self.left, GPIO.IN, pull_up_down=GPIO.PUD_UP)

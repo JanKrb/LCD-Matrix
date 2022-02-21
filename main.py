@@ -7,7 +7,7 @@ import RPi.GPIO as GPIO
 import time
 
 def main():
-    GPIO.setup(GPIO.BCM)
+    GPIO.setmode(GPIO.BCM)
     disp = SH1106()
 
     disp.Init()

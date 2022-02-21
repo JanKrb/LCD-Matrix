@@ -32,7 +32,7 @@ class Menu:
         self.draw_menu()
 
     def draw_menu(self):
-        for index, item in self.shown_menu:
+        for index, item in enumerate(self.shown_menu):
             self.draw.text((5, 5 * (index + 1)), item.title, font=self.font, fill=0)
 
     def menu_up(self):

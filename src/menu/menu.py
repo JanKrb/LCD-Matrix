@@ -44,7 +44,7 @@ class Menu:
 
     def rerender_display(self):
         self.reload_menu_items()
-        self.draw = ImageDraw.Draw(self.start_image)
+        self.display.clear()
         self.draw_menu()
 
     def menu_up(self, channel):

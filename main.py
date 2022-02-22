@@ -43,6 +43,7 @@ def main():
             print(new_buffer is not old_buffer)
             
             if new_buffer is not old_buffer:
+                disp.clear()
                 disp.show_image(new_buffer)
                 old_buffer = new_buffer
     except KeyboardInterrupt:

@@ -40,6 +40,7 @@ def main():
     try:
         while True: 
             new_buffer = disp.get_buffer(menu.start_image)
+            print(new_buffer is not old_buffer)
             
             if new_buffer is not old_buffer:
                 disp.show_image(new_buffer)

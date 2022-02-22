@@ -50,7 +50,7 @@ class Menu:
 
     def menu_down(self, channel):
         print(self.current_scroll_index)
-        self.current_scroll_index = min(0, self.current_scroll_index - 1)
+        self.current_scroll_index = max(0, self.current_scroll_index - 1)
         print(self.current_scroll_index)
         self.rerender_display()
 

@@ -46,7 +46,6 @@ class Menu:
         print(self.current_scroll_index)
         print(self.shown_menu)
         self.reload_menu_items()
-        self.draw = ImageDraw.Draw(self.start_image)
         self.draw_menu()
 
     def menu_up(self, channel):

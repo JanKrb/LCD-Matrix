@@ -20,7 +20,6 @@ def main():
 
     menu = Menu(disp)
     disp.clear()
-    disp.show_image(disp.get_buffer(menu.start_image))
 
     # Setup Buttons & Joystick
     menu_controller_joystick = Joystick(JSKM.UP, JSKM.DOWN, JSKM.LEFT, JSKM.RIGHT, JSKM.PRESS)
@@ -37,8 +36,14 @@ def main():
     menu_controller_buttons.event_key3 = menu.menu_option3
     menu_controller_buttons._setup_events()
 
+    old_buffer = None
     try:
-        while True: pass
+        while True: 
+            new_buffer = disp.get_buffer(menu.start_image)
+            
+            if new_buffer is not old_buffer:
+                disp.show_image(new_buffer)
+                old_buffer = new_buffer
     except KeyboardInterrupt:
         disp.reset()
         SPI.module_exit()

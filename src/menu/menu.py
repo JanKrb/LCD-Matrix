@@ -14,7 +14,9 @@ class MenuItem:
 class Settings: 
     menu_items = [
         MenuItem('Uhrzeit', ClockModule),
-        MenuItem('Temp.', TemperatureModule)
+        MenuItem('Temp.', TemperatureModule),
+        MenuItem('Uxhrzeit', ClockModule),
+        MenuItem('Texmp.', TemperatureModule),
     ]
 
     items_on_display = 2
@@ -36,11 +38,15 @@ class Menu:
         for index, item in enumerate(self.shown_menu):
             self.draw.text((5, Settings.items_margin * index + 5), f"{index + 1} {item.title}", font=self.font, fill=0)
 
+    def rerender_display(self):
+        self.draw = ImageDraw.Draw(self.start_image)
+        self.draw_menu()
+
     def menu_up(self, channel):
-        pass
+        self.current_scroll_index = max(self.current_scroll_index + 1, len(Settings.menu_items) - 1)
 
     def menu_down(self, channel):
-        pass
+        self.current_scroll_index = min(0, self.current_scroll_index - 1)
 
     def menu_option1(self, channel):
         pass

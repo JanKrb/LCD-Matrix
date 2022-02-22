@@ -44,7 +44,7 @@ class Menu:
 
     def menu_up(self, channel):
         print(self.current_scroll_index)
-        self.current_scroll_index = max(self.current_scroll_index + 1, len(Settings.menu_items) - 1)
+        self.current_scroll_index = min(self.current_scroll_index + 1, len(Settings.menu_items) - 1)
         print(self.current_scroll_index)
         self.rerender_display()
 

@@ -36,6 +36,7 @@ class Menu:
 
     def draw_menu(self):
         for index, item in enumerate(self.shown_menu):
+            print(index, item.title)
             self.draw.text((5, Settings.items_margin * index + 5), f"{index + 1} {item.title}", font=self.font, fill=0)
     
     def reload_menu_items(self):

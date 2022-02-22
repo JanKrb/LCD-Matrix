@@ -43,9 +43,11 @@ class Menu:
         self.draw_menu()
 
     def menu_up(self, channel):
+        print("UP")
         self.current_scroll_index = max(self.current_scroll_index + 1, len(Settings.menu_items) - 1)
 
     def menu_down(self, channel):
+        print("DOWN")
         self.current_scroll_index = min(0, self.current_scroll_index - 1)
 
     def menu_option1(self, channel):

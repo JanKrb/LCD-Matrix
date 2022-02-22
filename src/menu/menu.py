@@ -36,7 +36,6 @@ class Menu:
 
     def draw_menu(self):
         for index, item in enumerate(self.shown_menu):
-            print(index, item.title)
             self.draw.text((5, Settings.items_margin * index + 5), f"{index + 1} {item.title}", font=self.font, fill=0)
     
     def reload_menu_items(self):
@@ -46,6 +45,8 @@ class Menu:
     def rerender_display(self):
         self.reload_menu_items()
         self.display.clear()
+        self.start_image = Image.new('1', (self.display.width, self.display.height), "WHITE")
+        self.draw = ImageDraw.Draw(self.start_image)
         self.draw_menu()
 
     def menu_up(self, channel):

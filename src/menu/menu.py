@@ -31,27 +31,28 @@ class Menu:
         self.start_image = Image.new('1', (display.width, display.height), "WHITE")
         self.draw = ImageDraw.Draw(self.start_image)
 
-        self.shown_menu = Settings.menu_items[self.current_scroll_index : (Settings.items_on_display + self.current_scroll_index)]
+        self.reload_menu_items()
         self.draw_menu()
 
     def draw_menu(self):
         for index, item in enumerate(self.shown_menu):
             self.draw.text((5, Settings.items_margin * index + 5), f"{index + 1} {item.title}", font=self.font, fill=0)
+    
+    def reload_menu_items(self):
+        self.shown_menu = Settings.menu_items[self.current_scroll_index : (Settings.items_on_display + self.current_scroll_index)]
+
 
     def rerender_display(self):
+        self.reload_menu_items()
         self.draw = ImageDraw.Draw(self.start_image)
         self.draw_menu()
 
     def menu_up(self, channel):
-        print(self.current_scroll_index)
         self.current_scroll_index = min(self.current_scroll_index + 1, len(Settings.menu_items) - 1)
-        print(self.current_scroll_index)
         self.rerender_display()
 
     def menu_down(self, channel):
-        print(self.current_scroll_index)
         self.current_scroll_index = max(0, self.current_scroll_index - 1)
-        print(self.current_scroll_index)
         self.rerender_display()
 
     def menu_option1(self, channel):

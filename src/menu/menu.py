@@ -2,8 +2,8 @@ from src.wrapper.sh1106 import Screen
 from src.modules.clock_module import Module as ClockModule
 from src.modules.temperature_module import Module as TemperatureModule
 from src.modules.test_module import Module as TestModule
+from src.state_manager import CUR_MODULE
 from PIL import Image, ImageDraw, ImageFont
-# from main import current_module
 import os
 
 font_path = os.path.join('assets', 'Font.ttf')
@@ -68,9 +68,9 @@ class Menu:
         self.select(3)
     
     def select(self, option):
-        # global current_module
+        global CUR_MODULE
 
         if Settings.items_on_display < option: 
             print(f"There is/are only {Settings.items_on_display} options.")
         
-        # current_module = self.shown_menu[option - 1]
+        CUR_MODULE = self.shown_menu[option - 1]

@@ -3,10 +3,9 @@ from src.menu.start_menu import StartMenu
 from src.menu.menu import Menu
 from src.wrapper.joystick import Joystick, Keymap as JSKM
 from src.wrapper.buttons import Buttons, Keymap as BKM
+from src.state_manager import CUR_MODULE
 import RPi.GPIO as GPIO
 import time
-
-current_module = None
 
 def main():
     GPIO.setmode(GPIO.BCM)
@@ -40,11 +39,11 @@ def main():
 
     try:
         while True:
-            if current_module == None:
+            if CUR_MODULE == None:
                 disp.show_image(disp.get_buffer(menu.start_image))
             else:
-                current_module.update()
-                disp.show_image(disp.get_buffer(current_module.draw()))
+                CUR_MODULE.update()
+                disp.show_image(disp.get_buffer(CUR_MODULE.draw()))
     except KeyboardInterrupt:
         disp.reset()
         SPI.module_exit()

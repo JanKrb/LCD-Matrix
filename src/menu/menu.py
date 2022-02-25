@@ -59,14 +59,13 @@ class Menu:
         self.rerender_display()
 
     def menu_option1(self, channel):
-        # Do not use btn 1, seems to be broken
-        pass
+        self.select(1)
     
     def menu_option2(self, channel):
-        self.select(1)
+        self.select(2)
 
     def menu_option3(self, channel):
-        self.select(2)
+        self.select(3)
     
     def select(self, option):
         global CUR_MODULE

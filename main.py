@@ -31,6 +31,7 @@ def main():
     menu_controller_joystick.event_down = menu.menu_down
     menu_controller_joystick._setup_events()
 
+    menu_controller_buttons.event_key1 = menu.menu_option1
     menu_controller_buttons.event_key2 = menu.menu_option2
     menu_controller_buttons.event_key3 = menu.menu_option3
     menu_controller_buttons._setup_events()

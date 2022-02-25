@@ -69,10 +69,10 @@ class Menu:
     
     def select(self, option):
         global CUR_MODULE
-        print(option)
 
         try:
             CUR_MODULE = self.shown_menu[option - 1]
+            print(CUR_MODULE)
         except IndexError:
             print("This option does not exists.")
         except Exception:

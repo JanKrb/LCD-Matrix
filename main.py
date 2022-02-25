@@ -3,7 +3,6 @@ from src.menu.start_menu import StartMenu
 from src.menu.menu import Menu
 from src.wrapper.joystick import Joystick, Keymap as JSKM
 from src.wrapper.buttons import Buttons, Keymap as BKM
-from src.state_manager import CUR_MODULE
 import RPi.GPIO as GPIO
 import time
 
@@ -39,7 +38,7 @@ def main():
 
     try:
         while True:
-            print("test")
+            from src.state_manager import CUR_MODULE
             print(CUR_MODULE)
 
             if CUR_MODULE == None:

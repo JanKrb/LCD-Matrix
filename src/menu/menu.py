@@ -70,7 +70,9 @@ class Menu:
     def select(self, option):
         global CUR_MODULE
 
-        if Settings.items_on_display < option: 
-            print(f"There is/are only {Settings.items_on_display} options.")
-        
-        CUR_MODULE = self.shown_menu[option - 1]
+        try:
+            CUR_MODULE = self.shown_menu[option - 1]
+        except IndexError:
+            print("This option does not exists.")
+        except Exception:
+            pass

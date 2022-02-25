@@ -1,6 +1,6 @@
 from src.wrapper.sh1106 import SH1106, SPI
 from src.menu.start_menu import StartMenu
-from src.menu.menu import Menu
+from src.menu.selection_menu import Menu
 from src.wrapper.joystick import Joystick, Keymap as JSKM
 from src.wrapper.buttons import Buttons, Keymap as BKM
 import RPi.GPIO as GPIO

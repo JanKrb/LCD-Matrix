@@ -6,6 +6,8 @@ from src.wrapper.buttons import Buttons, Keymap as BKM
 import RPi.GPIO as GPIO
 import time
 
+current_module = None
+
 def main():
     GPIO.setmode(GPIO.BCM)
     disp = SH1106()
@@ -37,8 +39,12 @@ def main():
     menu_controller_buttons._setup_events()
 
     try:
-        while True: 
-            disp.show_image(disp.get_buffer(menu.start_image))
+        while True:
+            if current_module == None:
+                disp.show_image(disp.get_buffer(menu.start_image))
+            else:
+                current_module.update()
+                disp.show_image(disp.get_buffer(current_module.draw()))
     except KeyboardInterrupt:
         disp.reset()
         SPI.module_exit()

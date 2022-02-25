@@ -1,7 +1,9 @@
 from src.wrapper.sh1106 import Screen
 from src.modules.clock_module import Module as ClockModule
 from src.modules.temperature_module import Module as TemperatureModule
+from src.modules.test_module import Module as TestModule
 from PIL import Image, ImageDraw, ImageFont
+from main import current_module
 import os
 
 font_path = os.path.join('assets', 'Font.ttf')
@@ -13,10 +15,9 @@ class MenuItem:
 
 class Settings: 
     menu_items = [
+        MenuItem('Test', TestModule),
         MenuItem('Uhrzeit', ClockModule),
-        MenuItem('Temp.', TemperatureModule),
-        MenuItem('Uxhrzeit', ClockModule),
-        MenuItem('Texmp.', TemperatureModule),
+        MenuItem('Temp.', TemperatureModule)
     ]
 
     items_on_display = 2
@@ -28,7 +29,7 @@ class Menu:
         self.font = ImageFont.truetype(font_path, 20)
         self.current_scroll_index = 0
 
-        self.start_image = Image.new('1', (display.width, display.height), "WHITE")
+        self.start_image = Image.new('1', (display.width, display.height), "WHITE") 6
         self.draw = ImageDraw.Draw(self.start_image)
 
         self.reload_menu_items()
@@ -58,10 +59,18 @@ class Menu:
         self.rerender_display()
 
     def menu_option1(self, channel):
-        pass
+        self.select(1)
     
     def menu_option2(self, channel):
-        pass
+        self.select(2)
 
     def menu_option3(self, channel):
-        pass
+        self.select(3)
+    
+    def select(self, option):
+        global current_module
+
+        if Settings.items_on_display < option: 
+            print(f"There is/are only {Settings.items_on_display} options.")
+        
+        current_module = self.shown_menu[option - 1]

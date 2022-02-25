@@ -29,7 +29,7 @@ class Menu:
         self.font = ImageFont.truetype(font_path, 20)
         self.current_scroll_index = 0
 
-        self.start_image = Image.new('1', (display.width, display.height), "WHITE") 6
+        self.start_image = Image.new('1', (display.width, display.height), "WHITE")
         self.draw = ImageDraw.Draw(self.start_image)
 
         self.reload_menu_items()

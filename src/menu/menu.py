@@ -71,7 +71,7 @@ class Menu:
         global CUR_MODULE
 
         try:
-            CUR_MODULE = self.shown_menu[option - 1]
+            CUR_MODULE = self.shown_menu[option - 1].module
             print(CUR_MODULE)
         except IndexError:
             print("This option does not exists.")

@@ -69,6 +69,7 @@ class Menu:
     
     def select(self, option):
         global CUR_MODULE
+        print(option)
 
         try:
             CUR_MODULE = self.shown_menu[option - 1]

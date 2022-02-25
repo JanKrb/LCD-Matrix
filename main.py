@@ -39,8 +39,9 @@ def main():
 
     try:
         while True:
+            print("test")
             print(CUR_MODULE)
-            
+
             if CUR_MODULE == None:
                 disp.show_image(disp.get_buffer(menu.start_image))
             else:

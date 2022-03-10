@@ -69,7 +69,7 @@ class Menu:
     
     def select(self, option):
         try:
-            StateManager.CUR_MODULE = self.shown_menu[option - 1].module
+            StateManager.CUR_MODULE = self.shown_menu[option - 1].module()
         except IndexError:
             print("This option does not exists.")
         except Exception:

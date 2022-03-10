@@ -41,10 +41,10 @@ def main():
             if menu.module == None:
                 disp.show_image(disp.get_buffer(menu.start_image))
             else:
-                menu.module.update()
                 menu.module.draw()
-
                 disp.show_image(disp.get_buffer(menu.module.image))
+
+                menu.module.update()
     except KeyboardInterrupt:
         disp.reset()
         SPI.module_exit()

@@ -59,7 +59,7 @@ class Menu:
         self.rerender_display()
 
     def menu_option1(self, channel):
-        print("test")
+        self.select(1)
     
     def menu_option2(self, channel):
         self.select(2)

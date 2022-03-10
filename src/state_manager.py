@@ -1,1 +1,2 @@
-CUR_MODULE = None
+class StateManager:
+    CUR_MODULE = None

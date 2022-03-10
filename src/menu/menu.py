@@ -2,7 +2,7 @@ from src.wrapper.sh1106 import Screen
 from src.modules.clock_module import Module as ClockModule
 from src.modules.temperature_module import Module as TemperatureModule
 from src.modules.test_module import Module as TestModule
-from src.state_manager import CUR_MODULE
+from src.state_manager import StateManager
 from PIL import Image, ImageDraw, ImageFont
 import os
 
@@ -68,10 +68,8 @@ class Menu:
         self.select(3)
     
     def select(self, option):
-        global CUR_MODULE
-
         try:
-            CUR_MODULE = self.shown_menu[option - 1].module
+            StateManager.CUR_MODULE = self.shown_menu[option - 1].module
         except IndexError:
             print("This option does not exists.")
         except Exception:

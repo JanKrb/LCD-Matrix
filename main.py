@@ -39,8 +39,6 @@ def main():
 
     try:
         while True:
-            print(StateManager.CUR_MODULE)
-
             if StateManager.CUR_MODULE == None:
                 disp.show_image(disp.get_buffer(menu.start_image))
             else:

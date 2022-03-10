@@ -65,7 +65,10 @@ class Menu:
         self.select(2)
 
     def menu_option3(self, channel):
-        self.select(3)
+        if self.module is None:
+            self.select(3)
+        else:
+            self.module = None
     
     def select(self, option):
         try:

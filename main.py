@@ -42,7 +42,9 @@ def main():
                 disp.show_image(disp.get_buffer(menu.start_image))
             else:
                 menu.module.update()
-                disp.show_image(disp.get_buffer(menu.module.draw()))
+                menu.module.draw()
+
+                disp.show_image(disp.get_buffer(menu.module.draw_image))
     except KeyboardInterrupt:
         disp.reset()
         SPI.module_exit()

@@ -68,6 +68,7 @@ class Menu:
         self.select(3)
     
     def select(self, option):
+        print(1)
         try:
             module_class = self.shown_menu[option - 1].module
             self.module = module_class()

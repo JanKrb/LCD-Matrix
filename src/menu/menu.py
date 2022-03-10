@@ -72,7 +72,7 @@ class Menu:
             print(1)
             module_class = self.shown_menu[option - 1].module
             print(2)
-            self.module = module_class()
+            self.module = module_class
             print(3)
             print(self.module)
             print(4)

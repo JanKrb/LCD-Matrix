@@ -43,7 +43,6 @@ class Menu:
     def reload_menu_items(self):
         self.shown_menu = Settings.menu_items[self.current_scroll_index : (Settings.items_on_display + self.current_scroll_index)]
 
-
     def rerender_display(self):
         self.reload_menu_items()
         self.display.clear()
@@ -71,6 +70,7 @@ class Menu:
     def select(self, option):
         try:
             module_class = self.shown_menu[option - 1].module
+            print(module_class)
             self.module = module_class()
         except IndexError:
             print("This option does not exists.")

@@ -44,7 +44,7 @@ def main():
                 menu.module.update()
                 menu.module.draw()
 
-                disp.show_image(disp.get_buffer(menu.module.draw_image))
+                disp.show_image(disp.get_buffer(menu.module.image))
     except KeyboardInterrupt:
         disp.reset()
         SPI.module_exit()

@@ -3,7 +3,6 @@ from src.menu.start_menu import StartMenu
 from src.menu.menu import Menu
 from src.wrapper.joystick import Joystick, Keymap as JSKM
 from src.wrapper.buttons import Buttons, Keymap as BKM
-import src.state_manager as state
 import RPi.GPIO as GPIO
 import time
 
@@ -39,13 +38,13 @@ def main():
 
     try:
         while True:
-            print(state.CUR_MODULE)
+            print(menu.module)
 
-            if state.CUR_MODULE == None:
+            if menu.module == None:
                 disp.show_image(disp.get_buffer(menu.start_image))
             else:
-                state.CUR_MODULE.update()
-                disp.show_image(disp.get_buffer(state.CUR_MODULE.draw()))
+                menu.module.update()
+                disp.show_image(disp.get_buffer(menu.module.draw()))
     except KeyboardInterrupt:
         disp.reset()
         SPI.module_exit()

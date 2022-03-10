@@ -15,9 +15,9 @@ class MenuItem:
 
 class Settings: 
     menu_items = [
-        MenuItem('Test', TestModule),
-        MenuItem('Uhrzeit', ClockModule),
-        MenuItem('Temp.', TemperatureModule)
+        MenuItem('Test', TestModule()),
+        MenuItem('Uhrzeit', ClockModule()),
+        MenuItem('Temp.', TemperatureModule())
     ]
 
     items_on_display = 2
@@ -69,7 +69,7 @@ class Menu:
     
     def select(self, option):
         try:
-            StateManager.CUR_MODULE = self.shown_menu[option - 1].module()
+            StateManager.CUR_MODULE = self.shown_menu[option - 1].module
         except IndexError:
             print("This option does not exists.")
         except Exception:

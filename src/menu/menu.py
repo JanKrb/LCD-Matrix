@@ -69,9 +69,13 @@ class Menu:
     
     def select(self, option):
         try:
+            print(1)
             module_class = self.shown_menu[option - 1].module
+            print(2)
             self.module = module_class()
+            print(3)
             print(self.module)
+            print(4)
         except IndexError:
             print("This option does not exists.")
         except Exception:

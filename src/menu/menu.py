@@ -71,6 +71,7 @@ class Menu:
         try:
             module_class = self.shown_menu[option - 1].module
             self.module = module_class()
+            print(self.module)
         except IndexError:
             print("This option does not exists.")
         except Exception:

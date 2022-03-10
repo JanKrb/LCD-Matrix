@@ -38,7 +38,7 @@ def main():
 
     try:
         while True:
-            print(menu.module)
+            # print(menu.module)
 
             if menu.module == None:
                 disp.show_image(disp.get_buffer(menu.start_image))

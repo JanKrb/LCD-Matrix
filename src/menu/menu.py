@@ -13,12 +13,6 @@ class MenuItem:
         self.module = module
 
 class Settings: 
-    menu_items = [
-        MenuItem('Test', TestModule),
-        MenuItem('Uhrzeit', ClockModule),
-        MenuItem('Temp.', TemperatureModule)
-    ]
-
     items_on_display = 2
     items_margin = 25
 
@@ -33,6 +27,12 @@ class Menu:
 
         self.module = None
 
+        self.menu_items = [
+            MenuItem('Test', TestModule()),
+            MenuItem('Uhrzeit', ClockModule()),
+            MenuItem('Temp.', TemperatureModule())
+        ]
+
         self.reload_menu_items()
         self.draw_menu()
 
@@ -41,7 +41,7 @@ class Menu:
             self.draw.text((5, Settings.items_margin * index + 5), f"{index + 1} {item.title}", font=self.font, fill=0)
     
     def reload_menu_items(self):
-        self.shown_menu = Settings.menu_items[self.current_scroll_index : (Settings.items_on_display + self.current_scroll_index)]
+        self.shown_menu = self.menu_items[self.current_scroll_index : (Settings.items_on_display + self.current_scroll_index)]
 
     def rerender_display(self):
         self.reload_menu_items()
@@ -51,7 +51,7 @@ class Menu:
         self.draw_menu()
 
     def menu_up(self, channel):
-        self.current_scroll_index = min(self.current_scroll_index + 1, len(Settings.menu_items) - 1)
+        self.current_scroll_index = min(self.current_scroll_index + 1, len(self.menu_items) - 1)
         self.rerender_display()
 
     def menu_down(self, channel):
@@ -70,7 +70,7 @@ class Menu:
     def select(self, option):
         try:
             module_class = self.shown_menu[option - 1].module
-            self.module = module_class(self.menu)
+            self.module = module_class
         except IndexError:
             print("This option does not exists.")
         except Exception:

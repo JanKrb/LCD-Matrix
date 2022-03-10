@@ -28,9 +28,9 @@ class Menu:
         self.module = None
 
         self.menu_items = [
-            MenuItem('Test', TestModule()),
-            MenuItem('Uhrzeit', ClockModule()),
-            MenuItem('Temp.', TemperatureModule())
+            MenuItem('Test', TestModule(self.display)),
+            MenuItem('Uhrzeit', ClockModule(self.display)),
+            MenuItem('Temp.', TemperatureModule(self.display))
         ]
 
         self.reload_menu_items()

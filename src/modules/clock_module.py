@@ -2,6 +2,7 @@ from src.modules.module import Module as TemplateModule
 from PIL import Image, ImageDraw, ImageFont
 from datetime import datetime
 import os
+import time
 
 font_path = os.path.join('assets', 'Font.ttf')
 
@@ -25,4 +26,5 @@ class Module(TemplateModule):
 
         now = datetime.now()
         self.time = now.strftime("%H:%M:%S")
-        print(self.time)
+        
+        time.sleep(1)

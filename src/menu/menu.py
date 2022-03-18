@@ -28,7 +28,6 @@ class Menu:
         self.module = None
 
         self.menu_items = [
-            MenuItem('Test', TestModule(self.display)),
             MenuItem('Uhrzeit', ClockModule(self.display)),
             MenuItem('Temp.', TemperatureModule(self.display))
         ]

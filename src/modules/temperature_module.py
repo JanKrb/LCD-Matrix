@@ -35,8 +35,7 @@ class Module(TemplateModule):
             self.display.clear()
             self.draw_object.text((5, 5), f"Temp: {temperature} °C", font=self.font, fill=0)
             self.draw_object.text((5, 30), f"Hum: {humidity} %", font=self.font, fill=0)
-
-        time.sleep(5)
+            time.sleep(5)
 
         return self.start_image
     

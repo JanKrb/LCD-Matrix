@@ -38,9 +38,6 @@ class Module(TemplateModule):
             self.draw_object.text((5, 5), f"Temp: {temperature} °C", font=self.font, fill=0)
             self.draw_object.text((5, 30), f"Hum: {humidity} %", font=self.font, fill=0)
 
-            self.draw_object.text((5, 5), str(temperature), font=self.font, fill=0)
-            self.draw_object.text((5, 30), str(humidity), font=self.font, fill=0)
-
         return self.start_image
     
     def update(self):

@@ -29,6 +29,8 @@ class Module(TemplateModule):
     def draw(self):
         temperature, humidity = self.get_data()
 
+        print(temperature, self.temperature)
+        print(humidity, self.humidity)
         if temperature is not self.temperature or humidity is not self.humidity:
             self.temperature = temperature
             self.humidity = humidity

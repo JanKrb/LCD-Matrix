@@ -41,8 +41,7 @@ def main():
             if menu.module == None:
                 disp.show_image(disp.get_buffer(menu.start_image))
             else:
-                menu.module.draw()
-                disp.show_image(disp.get_buffer(menu.module.image))
+                disp.show_image(disp.get_buffer(menu.module.draw()))
 
                 menu.module.update()
     except KeyboardInterrupt:

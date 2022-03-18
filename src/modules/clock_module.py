@@ -25,3 +25,4 @@ class Module(TemplateModule):
 
         now = datetime.now()
         self.time = now.strftime("%H:%M:%S")
+        print(self.time)

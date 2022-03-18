@@ -19,7 +19,7 @@ class Module(TemplateModule):
     def draw(self):
         self.draw_object.text((5, 5), self.time, font=self.font, fill=0)
 
-        return self.draw_object
+        return self.start_image
 
     def update(self):
         super().update()

@@ -21,7 +21,7 @@ class Module(TemplateModule):
 
     
     def get_data(self):
-        f = open(self.txt_path,"r")
+        f = open("sensor_data.txt","r")
         data = json.loads(f.read())
         print(data)
         #with open(self.txt_path,"r") as f:

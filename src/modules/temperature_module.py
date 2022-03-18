@@ -27,15 +27,19 @@ class Module(TemplateModule):
         return data["temperature"], data["humidity"]
      
     def draw(self):
-        time.sleep(1)
         temperature, humidity = self.get_data()
 
         if temperature is not self.temperature and humidity is not self.humidity:
+            self.temperature = temperature
+            self.humidity = humidity
+        
             self.start_image = Image.new('1', (self.display.width, self.display.height), "WHITE")
             self.draw_object = ImageDraw.Draw(self.start_image)
             self.display.clear()
             self.draw_object.text((5, 5), f"Temp: {temperature} °C", font=self.font, fill=0)
             self.draw_object.text((5, 30), f"Hum: {humidity} %", font=self.font, fill=0)
+
+            time.sleep(1)
 
         return self.start_image
     

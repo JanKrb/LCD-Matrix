@@ -3,8 +3,8 @@ import os
 import json
 
 class Module(TemplateModule):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, display):
+        super().__init__(display)
         self.txt_path = os.path.join(os.path.dirname(os.path.realpath(__file__)),"sensor_data.txt")
     
     def get_data(self):

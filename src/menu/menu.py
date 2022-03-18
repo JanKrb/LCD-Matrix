@@ -1,7 +1,6 @@
 from src.wrapper.sh1106 import Screen
 from src.modules.clock_module import Module as ClockModule
 from src.modules.temperature_module import Module as TemperatureModule
-from src.modules.test_module import Module as TestModule
 from PIL import Image, ImageDraw, ImageFont
 import os
 

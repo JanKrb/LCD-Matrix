@@ -12,7 +12,7 @@ class Module(TemplateModule):
         
         self.display = display
         
-        self.font = ImageFont.truetype(font_path, 20)
+        self.font = ImageFont.truetype(font_path, 15)
         
         self.start_image = Image.new('1', (display.width, display.height), "WHITE")
         self.draw_object = ImageDraw.Draw(self.start_image)
@@ -35,6 +35,8 @@ class Module(TemplateModule):
             self.start_image = Image.new('1', (self.display.width, self.display.height), "WHITE")
             self.draw_object = ImageDraw.Draw(self.start_image)
             self.display.clear()
+            self.draw_object.text((5, 5), f"Temp: {temperature} °C", font=self.font, fill=0)
+            self.draw_object.text((5, 30), f"Hum: {humidity} %", font=self.font, fill=0)
 
             self.draw_object.text((5, 5), str(temperature), font=self.font, fill=0)
             self.draw_object.text((5, 30), str(humidity), font=self.font, fill=0)

@@ -2,6 +2,7 @@ from src.modules.module import Module as TemplateModule
 from PIL import Image, ImageDraw, ImageFont
 import os
 import json
+import time
 
 font_path = os.path.join('assets', 'Font.ttf')
 
@@ -16,6 +17,9 @@ class Module(TemplateModule):
         self.start_image = Image.new('1', (display.width, display.height), "WHITE")
         self.draw_object = ImageDraw.Draw(self.start_image)
 
+        self.temperature = 0
+        self.humidity =0
+
     
     def get_data(self):
         f = open("sensor_data.txt","r")
@@ -23,13 +27,17 @@ class Module(TemplateModule):
         return data["temperature"], data["humidity"]
      
     def draw(self):
-        temperature, humidity = self.get_data()
-        self.start_image = Image.new('1', (self.display.width, self.display.height), "WHITE")
-        self.draw_object = ImageDraw.Draw(self.start_image)
-        self.display.clear()
+        time.sleep(5)
 
-        self.draw_object.text((5, 5), str(temperature), font=self.font, fill=0)
-        self.draw_object.text((5, 30), str(humidity), font=self.font, fill=0)
+        temperature, humidity = self.get_data()
+
+        if temperature is not self.temperature and humidity is not self.humidity:
+            self.start_image = Image.new('1', (self.display.width, self.display.height), "WHITE")
+            self.draw_object = ImageDraw.Draw(self.start_image)
+            self.display.clear()
+
+            self.draw_object.text((5, 5), str(temperature), font=self.font, fill=0)
+            self.draw_object.text((5, 30), str(humidity), font=self.font, fill=0)
 
         return self.start_image
     

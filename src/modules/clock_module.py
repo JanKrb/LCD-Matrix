@@ -13,12 +13,12 @@ class Module(TemplateModule):
         self.font = ImageFont.truetype(font_path, 20)
 
         self.start_image = Image.new('1', (display.width, display.height), "WHITE")
-        self.draw = ImageDraw.Draw(self.start_image)
+        self.draw_object = ImageDraw.Draw(self.start_image)
 
     def draw(self):
-        self.draw.text((5, 5), self.time, font=self.font, fill=0)
+        self.draw_object.text((5, 5), self.time, font=self.font, fill=0)
 
-        return self.draw
+        return self.draw_object
 
     def update(self):
         super().update()

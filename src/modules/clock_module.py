@@ -19,8 +19,11 @@ class Module(TemplateModule):
         self.draw_object = ImageDraw.Draw(self.start_image)
 
     def draw(self):
-        self.draw_object.text((5, 5), self.time, font=self.font, fill=0)
+        self.start_image = Image.new('1', (self.display.width, self.display.height), "WHITE")
+        self.draw_object = ImageDraw.Draw(self.start_image)
         self.display.clear()
+
+        self.draw_object.text((5, 5), self.time, font=self.font, fill=0)
 
         return self.start_image
 

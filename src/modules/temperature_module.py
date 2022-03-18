@@ -31,7 +31,7 @@ class Module(TemplateModule):
 
         print(temperature, self.temperature)
         print(humidity, self.humidity)
-        if temperature is not self.temperature or humidity is not self.humidity:
+        if temperature != self.temperature or humidity != self.humidity:
             self.temperature = temperature
             self.humidity = humidity
         

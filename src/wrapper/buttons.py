@@ -22,8 +22,6 @@ class Buttons:
         self._setup_events()
 
     def _setup_keys(self):
-        GPIO.setup(GPIO.BCM)
-
         GPIO.setup(self.key1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         GPIO.setup(self.key2, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         GPIO.setup(self.key3, GPIO.IN, pull_up_down=GPIO.PUD_UP)

@@ -1,33 +1,49 @@
-from src.wrapper.sh1106 import SH1106, Screen, SPI
-from PIL import Image, ImageDraw, ImageFont
+from src.wrapper.sh1106 import SH1106, SPI
+from src.menu.start_menu import StartMenu
+from src.menu.menu import Menu
+from src.wrapper.joystick import Joystick, Keymap as JSKM
+from src.wrapper.buttons import Buttons, Keymap as BKM
 import RPi.GPIO as GPIO
-import os
-
-font_path = os.path.join('assets', 'Font.ttf')
-
+import time
 
 def main():
+    GPIO.setmode(GPIO.BCM)
     disp = SH1106()
 
     disp.Init()
     disp.clear()
+    
+    start_screen = StartMenu(disp)
+    disp.show_image(disp.get_buffer(start_screen.start_image))
 
-    start_image = Image.new('1', (disp.width, disp.height), "WHITE")
-    draw = ImageDraw.Draw(start_image)
-    font = ImageFont.truetype(font_path, 20)
+    time.sleep(2)
 
-    draw.line([(0, 0), (Screen.width - 1, 0)], fill=0)  # Top
-    draw.line([(0, 0), (0, Screen.height - 1)], fill=0)  # Left
-    draw.line([(0, Screen.height - 1), (Screen.width - 1, Screen.height - 1)], fill=0)  # Bottom
-    draw.line([(Screen.width - 1, 0), (Screen.width - 1, Screen.height - 1)], fill=0)  # Right
+    menu = Menu(disp)
+    disp.clear()
 
-    draw.text((5, 5), 'Niclas Heide', font=font, fill=0)
-    draw.text((5, 25), 'Jan Ruhfus ', font=font, fill=0)
+    # Setup Buttons & Joystick
+    menu_controller_joystick = Joystick(JSKM.UP, JSKM.DOWN, JSKM.LEFT, JSKM.RIGHT, JSKM.PRESS)
+    menu_controller_buttons = Buttons(BKM.KEY1, BKM.KEY2, BKM.KEY3)
 
-    disp.show_image(disp.getbuffer(start_image))
+
+    # Setup button events for menu
+    menu_controller_joystick.event_up = menu.menu_up
+    menu_controller_joystick.event_down = menu.menu_down
+    menu_controller_joystick._setup_events()
+
+    menu_controller_buttons.event_key1 = menu.menu_option1
+    menu_controller_buttons.event_key2 = menu.menu_option2
+    menu_controller_buttons.event_key3 = menu.menu_option3
+    menu_controller_buttons._setup_events()
 
     try:
-        while True: pass
+        while True:
+            if menu.module == None:
+                disp.show_image(disp.get_buffer(menu.start_image))
+            else:
+                disp.show_image(disp.get_buffer(menu.module.draw()))
+
+                menu.module.update()
     except KeyboardInterrupt:
         disp.reset()
         SPI.module_exit()

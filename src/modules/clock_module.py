@@ -10,6 +10,8 @@ class Module(TemplateModule):
     def __init__(self, display):
         super().__init__(display)
 
+        self.display = display
+
         self.time = "00:00:00"
         self.font = ImageFont.truetype(font_path, 20)
 
@@ -18,6 +20,7 @@ class Module(TemplateModule):
 
     def draw(self):
         self.draw_object.text((5, 5), self.time, font=self.font, fill=0)
+        self.display.clear()
 
         return self.start_image
 
